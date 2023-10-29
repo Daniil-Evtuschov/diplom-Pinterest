@@ -1,0 +1,101 @@
+.conteiner {
+    max-width: 1900px;
+    padding-top: 15px;
+}
+.wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoWrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: transparent;
+    border-radius: 50%;
+    margin-right: 30px;
+    cursor: pointer;
+}
+.searchWrap{
+    width: 1600px;
+    height: 50px;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.search {
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    background-color: rgb(223, 222, 221);
+    padding: 10px 25px;
+}
+
+.desckListWrap{
+    width: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding: 15px;
+    background-color: rgb(175, 174, 174);
+    border-radius: 10px;
+    position: relative;
+    margin-left: 30px;
+    &::after{
+        content: "";
+        position: absolute;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 15px solid black;
+        right:4%;
+        top: 45%;   
+    }
+    &::before{
+        content: "";
+        position: absolute;
+        z-index: 2;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 10px solid   white;
+        right:7%;
+        top: 49%;
+    }
+
+    .dasckMenu {
+        margin: auto;
+        width: 150px;
+        background-color: rgb(238, 237, 236);
+        padding: 5px;
+        border-radius: 15px;
+        display: none;
+        position: absolute;
+        right: 2px;
+        top: 50px;
+
+        
+        .dasckMenuList {
+            .dascMenuListItem{
+                text-align: start;
+                padding: 8px;
+                font-size: 16px;
+                cursor: pointer;
+                &:hover{
+                    border-radius: 10px;
+                    background-color: rgb(177, 176, 175);
+                }
+            }
+        }
+    }
+
+    .active{
+        display: block;
+    }
+    
+    
+}
+
+

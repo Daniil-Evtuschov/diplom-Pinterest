@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./scss/index.scss">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="conteiner">
+                <div class="wrap">
+                    <div class="logoWrap">
+                        <img src="./icons/icons8-pinterest-48.svg" alt="">
+                    </div>
+                    <div class="searchWrap">
+                        <input class="search" placeholder="Поиск" type="text">
+                    </div>
+                    <div onclick="event.stopPropagation()" class="desckListWrap">
+                        <p>Доски</p>
+                        <div class="dasckMenu">
+                            <ul class="dasckMenuList">
+                                <li class="dascMenuListItem">world of warcraft arts</li>
+                                <li class="dascMenuListItem">arts</li>
+                                <li class="dascMenuListItem">Edit pins</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="cardSection">
+        <div class="cardConteiner"> 
+            <!-- <div class="cardWrap">
+                <div class="card">
+                    <img class="cardImg" src="./e1b74c8fcbfee400e9145da29283c066.jpg" alt="">
+                    <div onclick="event.stopPropagation()" class="wrapMenu"> 
+                        <span class="dots"></span>
+                        <span class="dots"></span>
+                        <span class="dots"></span>
+                    </div>
+                </div>
+                <div class="userDescriptionWrap">
+                    <p class="userDescription">My feet</p>
+                </div>
+                <div class="user">
+                    <div class="userAvatarWrap">
+                        <img class="userAvatar" src="./dc1e65500051e866a821b4e601c98d30.jpg" alt="">
+                    </div>
+                    <div class="userNameWrap">
+                        <p class="userName"></p>
+                    </div>
+                </div>
+            </div> -->
+            <div class="menuListWrap">
+                <ul class="menuList">
+                    <li class="menuListItem">Добавить на доску</li>
+                    <li class="menuListItem">Скрыть пин со страницы</li>
+                    <li onclick="event.stopPropagation()" id="report" class="menuListItem">Пожаловаться</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="reportBackground">
+        <div onclick="event.stopPropagation()" class="reportPin">
+        <ul class="reportPinList">
+            <li class="reportPinItem">Спам</li>
+            <p class="reportSubtitle">Вводящие в заблуждение или повторяющиеся публикации</p>
+            <li class="reportPinItem">Изображения обнаженного тела, порнография или содержимое сексуального характера</li>
+            <p class="reportSubtitle">Содержимое сексуального характера с участием взрослых или изображением обнаженного тела, материалами в стиле нон-нюд либо с участием несовершеннолетних или со сценами умышленного злоупотребления ими.</p>
+            <li class="reportPinItem">Членовредительство</li>
+            <p class="reportSubtitle">Расстройства пищевого поведения, нанесение травм себе, суицид</p>
+            <li class="reportPinItem">Ложная информация</li>
+            <p class="reportSubtitle">Ложная информация о здоровье, климате, голосованиях или теории заговора</p>
+            <li class="reportPinItem">Агрессивные действия</li>
+            <p class="reportSubtitle">Предрассудки, стереотипы, идея превосходства белой расы, оскорбления</p>
+            <li class="reportPinItem">Опасные товары</li>
+            <p class="reportSubtitle">Наркотики, оружие, регулируемые товары</p>
+            <li class="reportPinItem">Преследование или критика</li>
+            <p class="reportSubtitle">Оскорбления, угрозы, изображения обнаженного тела, опубликованные без разрешения</p>
+            <li class="reportPinItem">Сцены насилия</li>
+            <p class="reportSubtitle">Графическое изображение или пропаганда насилия</p>
+            <li class="reportPinItem">Нарушение конфиденциальности</li>
+            <p class="reportSubtitle">Личные фотографии, персональная информация</p>
+            <li class="reportPinItem">Это моя интеллектуальная собственность</li>
+            <p class="reportSubtitle">Нарушение авторских прав или прав на товарный знак</p>
+        </ul>
+        <div class="buttonWrap">
+            <button class="reportBtton" id="closeButton">отмена</button>
+            <button class="reportBtton" id="acceptButton">продолжить</button>
+        </div>
+    </div>
+</div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
