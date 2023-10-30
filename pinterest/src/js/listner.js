@@ -1,28 +1,11 @@
-// const menuList = document.getElementsByClassName('menuListWrap');
-// const menu = document.getElementsByClassName('wrapMenu');
-
+import { printCards } from "./PinterestCard";
 const headerMeny = document.querySelector('.desckListWrap');
 const headerMenuList = document.querySelector('.dasckMenu');
 
+
 // const listItemReport = document.getElementById('report');
 // const reportPin = document.querySelector('.reportPin');
-// const reportbackGround = document.querySelector('.reportBackground') 
-
-// export function MenuActive() {
-//     menuList.classList.toggle('active')
-//     // document.body.addEventListener('click',()=>{menuList.classList.remove('active')});
-//     headerMenuList.classList.remove('active')
-// }
-
-// menu.addEventListener('click',MenuActive)
-
-// export function MenuActive() {
-//     menuList.classList.toggle('active')
-//     document.body.addEventListener('click',()=>{menuList.classList.remove('active')});
-//     headerMenuList.classList.remove('active')
-// }
-
-// menu.addEventListener('click',MenuActive)
+// const reportbackGround = document.querySelector('.reportBackground'); 
 
 
 // export function reportWindow() {
@@ -40,7 +23,18 @@ const headerMenuList = document.querySelector('.dasckMenu');
 export function dasckMenuActive() {
     headerMenuList.classList.toggle('active')
     document.body.addEventListener('click',()=>{headerMenuList.classList.remove('active')});
-    menuList.classList.remove('active')
+    // let menuListWrap = document.getElementsByClassName('.menuListWrap')
+    // menuListWrap.classList.remove('active')
 }
 
 headerMeny.addEventListener('click',dasckMenuActive)
+
+// export function menuActive() {
+//     const headerMenuList = document.querySelector('.dasckMenu');
+//     let menuListWrap =  document.getElementsByClassName('menuListWrap')
+//     console.log(menuListWrap);
+//     menuListWrap.classList.toggle('active');
+//     // document.body.addEventListener('click',()=>{menuListWrap.classList.remove('active')});
+//     headerMenuList.classList.remove('active');
+// }
+

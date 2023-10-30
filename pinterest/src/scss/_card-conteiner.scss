@@ -4,14 +4,25 @@
 
 }
 
-.cardConteiner {
-    width: 93%;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
+
+
+#secondContiner , #thirdContiner{
+    display: none;
 }
+
+
+.cardConteiner , .secondContiner {
+    width: 93%;
+    column-width: 226px;
+    column-gap: 15px;
+    margin: auto;
+}
+
 .cardWrap{
+    width: 100%;
+    height: auto;
     padding: 8px;
+    position: relative;
 }
 .card {
     width: 236px;
@@ -23,7 +34,7 @@
 
     .cardImg{
         width: 100%;
-        height: 100%;
+        // height: 100%;
     }
     
     cursor: zoom-in;
@@ -86,7 +97,8 @@
     position: absolute;
     z-index: 4;
     display: none;
-    left: 115px;
+    left: 50px;
+    top: 190px;
 
     .menuList{
         .menuListItem{
@@ -101,6 +113,63 @@
     }
 
 }
+.custom-radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    cursor: pointer;
+  }
+  /* для элемента label связанного с .custom-radio */
+  .custom-radio+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+  }
+  /* создание в label псевдоэлемента  before со следующими стилями */
+  .custom-radio+label::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 1px solid #37383a;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    cursor: pointer;
+  }
+  /* стили при наведении курсора на радио */
+  .custom-radio:not(:disabled):not(:checked)+label:hover::before {
+    cursor: pointer;
+    border-color: #999fa7;
+  }
+  /* стили для активной радиокнопки (при нажатии на неё) */
+  .custom-radio:not(:disabled):active+label::before {
+    cursor: pointer;
+    background-color: #848586;
+    border-color: #999ca0;
+  }
+  /* стили для радиокнопки, находящейся в фокусе */
+  .custom-radio:focus+label::before {
+    cursor: pointer;
+  }
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+  .custom-radio:focus:not(:checked)+label::before {
+    cursor: pointer;
+    border-color: #cccdce;
+  }
+  /* стили для радиокнопки, находящейся в состоянии checked */
+  .custom-radio:checked+label::before {
+    cursor: pointer;
+
+    border-color: #999a9c;
+    background-color: #242527;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+  }
 
 .reportPin {
     max-width: 500px;
@@ -116,17 +185,8 @@
         font-size: 20px;
         padding: 15px;
         cursor: pointer;
-        &::before{
-            content: "";
-            display: block;
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            border-radius: 50% ;
-            border: solid 2px  rgb(177, 176, 175);
-            left: 2%;
-        }
     }
+   
     .reportSubtitle{
         font-size: 14px;
         color: #5F5F5F;
@@ -161,4 +221,20 @@
 }
 .active{
     display: block;
+}
+
+.continueModalWindow{
+    text-align: center;
+    max-width: 500px;
+    background-color: rgb(238, 237, 236);
+    padding: 20px;
+    position: absolute;
+    z-index: 999;
+    top: 1%;
+    left: 40%;
+    border-radius: 15px;
+}
+
+.disabled{
+    display: none;
 }

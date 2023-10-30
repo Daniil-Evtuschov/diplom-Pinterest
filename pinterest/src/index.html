@@ -21,9 +21,11 @@
                         <p>Доски</p>
                         <div class="dasckMenu">
                             <ul class="dasckMenuList">
-                                <li class="dascMenuListItem">world of warcraft arts</li>
-                                <li class="dascMenuListItem">arts</li>
-                                <li class="dascMenuListItem">Edit pins</li>
+                                <li id="dasckMenufirstListItem" class="dascMenuListItem">world of warcraft arts</li>
+                                <li id="dasckMenuSecondListItem" class="dascMenuListItem">D&D arts</li>
+                                <li class="dascMenuListItem">Доска 1</li>
+                                <li class="dascMenuListItem">Доска 2</li>
+                                <li class="dascMenuListItem">Доска 3</li>
                             </ul>
                         </div>
                     </div>
@@ -31,60 +33,43 @@
             </div>
         </nav>
     </header>
-    <section class="cardSection">
-        <div class="cardConteiner"> 
-            <!-- <div class="cardWrap">
-                <div class="card">
-                    <img class="cardImg" src="./e1b74c8fcbfee400e9145da29283c066.jpg" alt="">
-                    <div onclick="event.stopPropagation()" class="wrapMenu"> 
-                        <span class="dots"></span>
-                        <span class="dots"></span>
-                        <span class="dots"></span>
-                    </div>
-                </div>
-                <div class="userDescriptionWrap">
-                    <p class="userDescription">My feet</p>
-                </div>
-                <div class="user">
-                    <div class="userAvatarWrap">
-                        <img class="userAvatar" src="./dc1e65500051e866a821b4e601c98d30.jpg" alt="">
-                    </div>
-                    <div class="userNameWrap">
-                        <p class="userName"></p>
-                    </div>
-                </div>
-            </div> -->
-            <div class="menuListWrap">
-                <ul class="menuList">
-                    <li class="menuListItem">Добавить на доску</li>
-                    <li class="menuListItem">Скрыть пин со страницы</li>
-                    <li onclick="event.stopPropagation()" id="report" class="menuListItem">Пожаловаться</li>
-                </ul>
-            </div>
-        </div>
+    <section class="cardSection" id="mainsection" >
+        <div id="firstConteiner" class="cardConteiner"></div>
+        <div class="secondContiner" id="secondConteiner"></div>
+        <div class="thirdContiner" id="thirdContiner"></div>
     </section>
-    <div class="reportBackground">
-        <div onclick="event.stopPropagation()" class="reportPin">
+    <div class="reportBackground" id="reportBackground">
+        <div onclick="event.stopPropagation()" class="reportPin" id="reportPin">
         <ul class="reportPinList">
-            <li class="reportPinItem">Спам</li>
+            <li class="reportPinItem"><input class="custom-radio" type="radio" id="report-1" name="report" value="1">
+                <label for="report-1">Спам</label></li>
             <p class="reportSubtitle">Вводящие в заблуждение или повторяющиеся публикации</p>
-            <li class="reportPinItem">Изображения обнаженного тела, порнография или содержимое сексуального характера</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-2" value="2">
+                <label for="report-2">Изображения обнаженного тела, порнография или содержимое сексуального характера</label></li>
             <p class="reportSubtitle">Содержимое сексуального характера с участием взрослых или изображением обнаженного тела, материалами в стиле нон-нюд либо с участием несовершеннолетних или со сценами умышленного злоупотребления ими.</p>
-            <li class="reportPinItem">Членовредительство</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-3" value="3">
+                <label for="report-3">Членовредительство</label></li>
             <p class="reportSubtitle">Расстройства пищевого поведения, нанесение травм себе, суицид</p>
-            <li class="reportPinItem">Ложная информация</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-4" value="4">
+                <label for="report-4">Ложная информация</label></li>
             <p class="reportSubtitle">Ложная информация о здоровье, климате, голосованиях или теории заговора</p>
-            <li class="reportPinItem">Агрессивные действия</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-5" value="5">
+                <label for="report-5">Агрессивные действия</label></li>
             <p class="reportSubtitle">Предрассудки, стереотипы, идея превосходства белой расы, оскорбления</p>
-            <li class="reportPinItem">Опасные товары</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-6" value="6">
+                <label for="report-6">Опасные товары</label></li>
             <p class="reportSubtitle">Наркотики, оружие, регулируемые товары</p>
-            <li class="reportPinItem">Преследование или критика</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-7" value="7">
+                <label for="report-7">Преследование или критика</label></li>
             <p class="reportSubtitle">Оскорбления, угрозы, изображения обнаженного тела, опубликованные без разрешения</p>
-            <li class="reportPinItem">Сцены насилия</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-8" value="8">
+                <label for="report-8">Сцены насилия</label></li>
             <p class="reportSubtitle">Графическое изображение или пропаганда насилия</p>
-            <li class="reportPinItem">Нарушение конфиденциальности</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-9" value="9">
+                <label for="report-9">Нарушение конфиденциальности</label></li>
             <p class="reportSubtitle">Личные фотографии, персональная информация</p>
-            <li class="reportPinItem">Это моя интеллектуальная собственность</li>
+            <li class="reportPinItem"><input class="custom-radio" name="report" type="radio" id="report-10" value="10">
+                <label for="report-10">Это моя интеллектуальная собственность</label></li>
             <p class="reportSubtitle">Нарушение авторских прав или прав на товарный знак</p>
         </ul>
         <div class="buttonWrap">
