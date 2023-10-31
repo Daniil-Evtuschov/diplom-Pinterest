@@ -6,12 +6,12 @@
 
 
 
-#secondContiner , #thirdContiner{
+.firstDesck , .secondDesck, #thirdContiner{
     display: none;
 }
 
 
-.cardConteiner , .secondContiner {
+.cardConteiner , .firstDesck {
     width: 93%;
     column-width: 226px;
     column-gap: 15px;
@@ -31,6 +31,7 @@
     position: relative;
     object-fit: cover;
     object-position: center;
+    max-height: 750px;
 
     .cardImg{
         width: 100%;
@@ -97,8 +98,8 @@
     position: absolute;
     z-index: 4;
     display: none;
-    left: 50px;
-    top: 190px;
+    right: -27%;
+    top: 80%;
 
     .menuList{
         .menuListItem{
@@ -175,7 +176,7 @@
     max-width: 500px;
     background-color: rgb(238, 237, 236);
     padding: 20px;
-    position: absolute;
+    position: fixed;
     z-index: 999;
     top: 1%;
     left: 40%;
@@ -213,7 +214,7 @@
     height: 100%;
     left: 0;
     top: 0;
-    position: absolute;
+    position: fixed;
     z-index: 7;
     background: rgba(10, 10, 10, 0.6);
     display: none;
@@ -237,4 +238,23 @@
 
 .disabled{
     display: none;
+}
+
+#secondModal{
+    top: 30%;
+    width: 300px;
+    height: 260px;
+    ul{
+        text-align: center;
+    }
+    li{
+        margin-top: 20px;
+        font-size: 27px;
+        padding: 8px;
+        cursor: pointer;
+        &:hover{
+            border-radius: 10px;
+            background-color: rgb(177, 176, 175);
+    }
+}
 }

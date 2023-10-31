@@ -1,7 +1,7 @@
-import {menuActive,dasckMenuActive,reportWindow} from "./listner";
+import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner";
  
   export function getdata() {
-        fetch('https://65380171a543859d1bb12222.mockapi.io//users')
+        fetch('https://65380171a543859d1bb12222.mockapi.io//seconddesck')
         .then(response=> response.json())
         .then(data => data.forEach(element => {printTodo(element,data)}))
     }
@@ -10,9 +10,9 @@ import {menuActive,dasckMenuActive,reportWindow} from "./listner";
      function printTodo(element) {
         //created variables
         let cardImg = new Image();
-        cardImg.src = element.img
+        cardImg.src = element.img;
         let userAvatar = new Image();
-        userAvatar.src = element.avatar
+        userAvatar.src = element.avatar;
     
         const conteiner = document.querySelector('.cardConteiner');
         const cardWrap = document.createElement('div');
@@ -39,6 +39,7 @@ import {menuActive,dasckMenuActive,reportWindow} from "./listner";
     
         //added class
         cardWrap.classList.add('cardWrap');
+        cardWrap.id = element.id
         card.classList.add('card');
     
         cardImg.classList.add('cardImg')
@@ -55,6 +56,7 @@ import {menuActive,dasckMenuActive,reportWindow} from "./listner";
         MenuList.classList.add('menuList');
         menuLisItemAdded.classList.add('menuListItem');
         menuListItemHide.classList.add('menuListItem');
+        menuListItemHide.id = 'hidePin';
         menuListItemReport.classList.add('menuListItem');
     
         menuLisItemAdded.innerText = 'Добавить на доску';
@@ -89,63 +91,21 @@ import {menuActive,dasckMenuActive,reportWindow} from "./listner";
         userWrap.append(userNameWrap);
         userNameWrap.append(userName);
         userName.innerHTML=element.name;
-    
-         function menuActive(e) {
-            e.stopPropagation()
-    
-            const headerMenuList = document.querySelector('.dasckMenu');
-            menuListWrap.classList.toggle('active')
-            document.body.addEventListener('click',()=>{menuListWrap.classList.remove('active')});
-            headerMenuList.classList.remove('active');
-        }
-        wrapMenu.addEventListener('click',menuActive)
-    
-        reportWindow
-         function reportWindow(e) {
-            e.stopPropagation()
-    
-            const reportPin = document.getElementById('reportPin');
-            const reportbackGround = document.getElementById('reportBackground');
-             
-            reportPin.classList.toggle('active')
-            menuListWrap.classList.remove('active')
-            document.body.addEventListener('click',()=>{reportPin.classList.remove('active')});
-    
-            reportbackGround.classList.toggle('active')
-            document.body.addEventListener('click',()=>{reportbackGround.classList.remove('active')});
-    
-            const ContinueButton = document.getElementById('acceptButton');
-            const closeButton = document.getElementById('closeButton');
-    
-            closeButton.onclick = () => {
-                reportPin.classList.remove('active');
-                reportbackGround.classList.remove('active');
-            }
-    
-            ContinueButton.onclick = (e) => {
-                e.stopPropagation()
-                reportPin.classList.remove('active');
-                const continueModalWindow = document.createElement ('div');
-                const continueModaltext = document.createElement ('p');
-                continueModalWindow.classList.add('continueModalWindow')
-                reportbackGround.append(continueModalWindow)
-                continueModalWindow.appendChild(continueModaltext)
-                continueModaltext.innerText='большое спасибо за обратную связь. Мы отправим подозрительный конетент в службу поддержки на расмотрение'
-            }
-    
-        }
-        menuListItemReport.addEventListener('click',reportWindow);
         
-    }
-    const dasckMenufirstListItem = document.getElementById('dasckMenufirstListItem')
-
-    export function firstDesck () {
-        const firstConteiner = document.getElementById('firstConteiner');
-        const secondContiner = document.getElementById('secondConteiner');
+        //меню
+        wrapMenu.addEventListener('click',(event)=>menuActive(menuListWrap,event))
         
-        firstConteiner.classList.remove('disabled');
-        secondContiner.classList.add('disabled');
+        //добавить пин
+        menuLisItemAdded.addEventListener('click',(event)=>addPin(menuListWrap,event))
+
+        //Репорт
+        menuListItemReport.addEventListener('click',(event)=>reportWindow(menuListWrap,event));
+
+        //Хедер Меню
+        const headerMeny = document.querySelector('.desckListWrap');
+        headerMeny.addEventListener('click',(event)=>dasckMenuActive(menuListWrap,event));
+        
+        //Скрыть пин
+        menuListItemHide.addEventListener('click',()=>hidePin(element))
+
     }
-    dasckMenufirstListItem.addEventListener('click',firstDesck);
-
-
