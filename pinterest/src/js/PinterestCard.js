@@ -6,17 +6,19 @@ import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner"
         .then(data => data.forEach(element => {printTodo(element,data)}))
     }
     getdata();
-    
-     function printTodo(element) {
+
+    const conteiner = document.querySelector('.cardConteiner');
+
+     export default function printTodo(element) {
         //created variables
         let cardImg = new Image();
         cardImg.src = element.img;
         let userAvatar = new Image();
         userAvatar.src = element.avatar;
-    
-        const conteiner = document.querySelector('.cardConteiner');
+
         const cardWrap = document.createElement('div');
         const card = document.createElement('div');
+        const cardImgWrap = document.createElement('div');
     
         const wrapMenu = document.createElement('div');
         const firstDot = document.createElement('span');
@@ -31,6 +33,8 @@ import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner"
     
         const userDescriptionWrap = document.createElement('div');
         const userDescription = document.createElement('p');
+        const hashtag = document.createElement('span');
+
         
         const userWrap = document.createElement('div');
         const userAvatarWrap = document.createElement('div');
@@ -41,10 +45,12 @@ import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner"
         cardWrap.classList.add('cardWrap');
         cardWrap.id = element.id
         card.classList.add('card');
-    
+
+        cardImgWrap.classList.add('cardImgWrap')
         cardImg.classList.add('cardImg')
     
         userDescriptionWrap.classList.add('userDescriptionWrap');
+        hashtag.classList.add('hashtag');
         userDescription.classList.add('userDescription');
     
         wrapMenu.classList.add('wrapMenu');
@@ -72,19 +78,23 @@ import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner"
         //append elements
         conteiner.append(cardWrap);
         cardWrap.append(card);
-        card.appendChild(cardImg);
+        card.appendChild(cardImgWrap);
+        cardImgWrap.appendChild(cardImg)
     
-        card.append(wrapMenu);
+        cardImgWrap.append(wrapMenu);
         wrapMenu.append(firstDot,secondDot,thirdDot);
         
         cardWrap.append(menuListWrap)
         menuListWrap.append(MenuList)
         MenuList.append(menuLisItemAdded,menuListItemHide,menuListItemReport)
         
-        cardWrap.append(userDescriptionWrap);
-        cardWrap.append(userWrap);
-        userDescriptionWrap.append(userDescription)
+        card.append(userDescriptionWrap);
+        card.append(userWrap);
+        userDescriptionWrap.append(userDescription);
+        userDescriptionWrap.append(hashtag);
         userDescription.innerText=element.comment;
+        hashtag.innerText= element.hashtag ;
+
     
         userWrap.append(userAvatarWrap);
         userAvatarWrap.appendChild(userAvatar);
@@ -96,10 +106,10 @@ import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner"
         wrapMenu.addEventListener('click',(event)=>menuActive(menuListWrap,event))
         
         //добавить пин
-        menuLisItemAdded.addEventListener('click',(event)=>addPin(menuListWrap,event))
+        menuLisItemAdded.addEventListener('click',(event)=>addPin(menuListWrap,event,element))
 
         //Репорт
-        menuListItemReport.addEventListener('click',(event)=>reportWindow(menuListWrap,event));
+        menuListItemReport.addEventListener('click',(event)=>reportWindow(menuListWrap,event,element));
 
         //Хедер Меню
         const headerMeny = document.querySelector('.desckListWrap');
@@ -108,4 +118,8 @@ import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner"
         //Скрыть пин
         menuListItemHide.addEventListener('click',()=>hidePin(element))
 
+
+        
     }
+
+

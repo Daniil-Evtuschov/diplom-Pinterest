@@ -15,7 +15,7 @@
                         <img src="./icons/icons8-pinterest-48.svg" alt="">
                     </div>
                     <div class="searchWrap">
-                        <input class="search" placeholder="Поиск" type="text">
+                        <input class="search" id="pinterestSearch" placeholder="Поиск" type="text">
                     </div>
                     <div onclick="event.stopPropagation()" class="desckListWrap">
                         <p>Доски</p>
@@ -33,6 +33,7 @@
         </nav>
     </header>
     <section class="cardSection" id="mainsection" >
+
         <div id="mainConteiner" class="cardConteiner"></div>
 
         <div class="firstDesck" id="firstDesck"></div>
@@ -78,6 +79,13 @@
             <button class="reportBtton" id="closeButton">отмена</button>
             <button class="reportBtton" id="acceptButton">продолжить</button>
         </div>
+    </div>
+    <div onclick="event.stopPropagation()" class="secondModal">
+        <ul class="secondModalMenuList">
+            <li class="AddedInfirstDesck">Доска 1</li>
+            <li class="secondModalListItem">Доска 2</li>
+            <li class="secondModalListItem">Доска 3</li>
+        </ul>
     </div>
 </div>
     <script src="./js/index.js"></script>

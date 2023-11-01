@@ -1,7 +1,10 @@
-import { printCards } from "./PinterestCard";
+import  printCards  from "./PinterestCard";
+import firstDec from "./FirstDesck";
+
+
 const headerMenuList = document.querySelector('.dasckMenu');
 
-export function reportWindow(menuListWrap,event) {
+export function reportWindowInStoraje(menuListWrap,event,element,cardWrap) {
     event.stopPropagation();
 
     const reportPin = document.getElementById('reportPin');
@@ -17,6 +20,9 @@ export function reportWindow(menuListWrap,event) {
     const ContinueButton = document.getElementById('acceptButton');
     const closeButton = document.getElementById('closeButton');
 
+    const modalDesckWindow = document.querySelector('.secondModal');
+    modalDesckWindow.classList.remove('active')
+
     closeButton.onclick = () => {
         reportPin.classList.remove('active');
         reportbackGround.classList.remove('active');
@@ -31,41 +37,94 @@ export function reportWindow(menuListWrap,event) {
         reportbackGround.append(continueModalWindow);
         continueModalWindow.appendChild(continueModaltext);
         continueModaltext.innerText='большое спасибо за обратную связь. Мы отправим подозрительный конетент в службу поддержки на расмотрение';   
+        document.body.addEventListener('click',()=>{continueModalWindow.remove(continueModalWindow)});
+
+        let getStorage = JSON.parse(localStorage.getItem('firstDesc'));
+        let filter = getStorage.filter(todo=> todo.id !== element.id);
+        cardWrap.remove(cardWrap);
+        localStorage.setItem('firstDesc',JSON.stringify(filter));
     }
+    let badPin = document.getElementById(element.id)
+    badPin.classList.add('disabled')
 }
 
-export function addPin (menuListWrap,event) {
+export function reportWindow(menuListWrap,event,element) {
     event.stopPropagation();
-    const reportbackGround = document.getElementById('reportBackground');
-    const modalDesckWindow = document.createElement('ul')
-    const AddedInfirstDesck = document.createElement('li')
-    const AddedInSecondDesck = document.createElement('li')
-    const AddedInThirdDesck = document.createElement('li')
-
-    AddedInfirstDesck.innerText="Доска 1"
-    AddedInSecondDesck.innerText="Доска 2"
-    AddedInThirdDesck.innerText="Доска 3"
 
     const reportPin = document.getElementById('reportPin');
-    const reportPinList =document.querySelector('.reportPinList');
-    const buttonWrap = document.querySelector('.buttonWrap');
-   
-
-    reportbackGround.classList.toggle('active');
-    document.body.addEventListener('click',()=>{reportbackGround.classList.remove('active')});
-
-    
+    const reportbackGround = document.getElementById('reportBackground');
+     
     reportPin.classList.toggle('active');
     menuListWrap.classList.remove('active');
     document.body.addEventListener('click',()=>{reportPin.classList.remove('active')});
 
-    reportPin.id ="secondModal"
+    reportbackGround.classList.toggle('active')
+    document.body.addEventListener('click',()=>{reportbackGround.classList.remove('active')});
 
-    buttonWrap.remove(buttonWrap)
-    reportPinList.remove(reportPinList);
+    const ContinueButton = document.getElementById('acceptButton');
+    const closeButton = document.getElementById('closeButton');
 
-    reportPin.append(modalDesckWindow);
-    modalDesckWindow.append(AddedInfirstDesck,AddedInSecondDesck,AddedInThirdDesck);
+    const modalDesckWindow = document.querySelector('.secondModal');
+    modalDesckWindow.classList.remove('active')
+
+    closeButton.onclick = () => {
+        reportPin.classList.remove('active');
+        reportbackGround.classList.remove('active');
+    }
+
+    ContinueButton.onclick = (e) => {
+        e.stopPropagation();
+        reportPin.classList.remove('active');
+        const continueModalWindow = document.createElement ('div');
+        const continueModaltext = document.createElement ('p');
+        continueModalWindow.classList.add('continueModalWindow');
+        reportbackGround.append(continueModalWindow);
+        continueModalWindow.appendChild(continueModaltext);
+        continueModaltext.innerText='большое спасибо за обратную связь. Мы отправим подозрительный конетент в службу поддержки на расмотрение';   
+        document.body.addEventListener('click',()=>{continueModalWindow.remove(continueModalWindow)});
+
+        let badPin = document.getElementById(element.id)
+        badPin.classList.add('disabled')
+    }
+}
+
+export function addPin (menuListWrap,event,element) {
+    event.stopPropagation();
+    const reportbackGround = document.getElementById('reportBackground');
+    const modalDesckWindow = document.querySelector('.secondModal');
+    const AddedInfirstDesck = document.querySelector('.AddedInfirstDesck');
+    const AddedInSecondDesck = document.querySelector('.secondModalMenuList');
+    const AddedInThirdDesck = document.querySelector('.secondModalMenuList');
+
+
+    reportbackGround.classList.add('active');
+    document.body.addEventListener('click',()=>{reportbackGround.classList.remove('active')});
+    menuListWrap.classList.remove('active');
+
+    modalDesckWindow.classList.add('active')
+
+    let firstDesckStorje = localStorage.getItem('firstDesc') ? JSON.parse(localStorage.getItem('firstDesc')) : [];
+
+    function firstDescStoraje(event,element) {
+        event.stopPropagation();
+        reportbackGround.classList.remove('active');
+        firstDesckStorje.push(element);
+        localStorage.setItem('firstDesc', JSON.stringify(firstDesckStorje));
+        // firstDec(element)
+        firstDesckStorje.forEach(item=>firstDec(item));
+       console.log(firstDesckStorje);
+    }
+    AddedInfirstDesck.addEventListener('click',(event)=>firstDescStoraje(event,element,firstDesckStorje));
+    
+    // AddedInfirstDesck.onclick = (event,element)=>{
+      
+    //}
+    // AddedInSecondDesck.onclick = ()=>{
+    //     console.log('222');
+    // }
+    // AddedInThirdDesck.onclick = ()=>{
+    //     console.log('333');
+    // }
 }
 
 export function menuActive(menuListWrap,event) {
@@ -87,6 +146,15 @@ export function hidePin (element) {
     let badPin = document.getElementById(element.id)
     badPin.classList.add('disabled')
 }
+
+export function deleteInStorage(element,cardWrap) {
+    let getStorage = JSON.parse(localStorage.getItem('firstDesc'));
+    let filter = getStorage.filter(todo=> todo.id !== element.id);
+    cardWrap.remove(cardWrap);
+    localStorage.setItem('firstDesc',JSON.stringify(filter));
+}
+
+
 const desckMenufirstListItem = document.getElementById('dasckMenufirstListItem')
 function mainDesck () {
     const mainConteiner = document.getElementById('mainConteiner');
@@ -95,6 +163,7 @@ function mainDesck () {
     const secondDesck = document.getElementById('secondDesck');
     const thirdDesck = document.getElementById('thirdDesck');
 
+    firstDesck.classList.remove('active')
     mainConteiner.classList.remove('disabled')
     mainConteiner.classList.add('active')
 
@@ -113,6 +182,7 @@ function firstDesck () {
     const secondDesck = document.getElementById('secondDesck');
     const thirdDesck = document.getElementById('thirdDesck');
 
+    mainConteiner.classList.remove('active')
     firstDesck.classList.remove('disabled')
     firstDesck.classList.add('active')
 
