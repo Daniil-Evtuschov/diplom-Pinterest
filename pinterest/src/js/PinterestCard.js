@@ -40,7 +40,7 @@ import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner"
         const userAvatarWrap = document.createElement('div');
         const userNameWrap = document.createElement('div');
         const userName = document.createElement('div');
-    
+
         //added class
         cardWrap.classList.add('cardWrap');
         cardWrap.id = element.id
@@ -117,7 +117,6 @@ import {menuActive,dasckMenuActive,reportWindow,addPin,hidePin} from "./listner"
         
         //Скрыть пин
         menuListItemHide.addEventListener('click',()=>hidePin(element))
-
 
         
     }

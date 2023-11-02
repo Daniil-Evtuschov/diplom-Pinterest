@@ -4,19 +4,20 @@
 
 }
 
-
-
 .firstDesck , .secondDesck, #thirdContiner{
     display: none;
 }
 
 
-.cardConteiner , .firstDesck {
+.cardConteiner , .firstDesck ,.secondDesck ,.thirdDesck{
     width: 93%;
     column-width: 226px;
     column-gap: 20px;
     margin: auto;
+    min-height: 800px;
 }
+
+
 .hashtag{
     background: rgba(77, 75, 75, 0.2);;
 }
@@ -38,7 +39,6 @@
 
     .cardImg{
         width: 100%;
-        // height: 100%;
     }
     
     cursor: zoom-in;
@@ -91,7 +91,7 @@
 
 
 .menuListWrap{
-    width: 362px;
+    width: 332px;
     height: 110px;
     background-color: rgb(238, 237, 236);
     padding: 5px;
@@ -99,8 +99,8 @@
     position: absolute;
     z-index: 4;
     display: none;
-    right: -27%;
-    top: 80%;
+    right: -20%;
+    bottom: 3%;
 
     .menuList{
         .menuListItem{
@@ -264,4 +264,39 @@
 }
 .active{
     display: block;
+}
+
+
+@media(max-width:507px){
+    .hashtag{
+        background: rgba(77, 75, 75, 0.2);;
+    }
+    
+    .cardWrap{
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-bottom: 30px;
+    }
+    .card , .cardImgWrap {
+        width: 320px;
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        object-fit: cover;
+        object-position: center;
+        max-height: 750px;
+    
+        .cardImg{
+            width: 100%;
+        }
+        margin: auto;
+
+    }
+    .logoWrap{
+        margin-right: 1px;
+    }
+    .desckListWrap{
+        margin-left: 12px;
+    }
 }
