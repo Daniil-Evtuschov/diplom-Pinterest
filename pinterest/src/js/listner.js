@@ -101,20 +101,8 @@ export function addPin (menuListWrap,event,element) {
     document.body.addEventListener('click',()=>{reportbackGround.classList.remove('active')});
     menuListWrap.classList.remove('active');
 
-    modalDesckWindow.classList.add('active')
-
-    let firstDesckStorje = localStorage.getItem('firstDesc') ? JSON.parse(localStorage.getItem('firstDesc')) : [];
-
-    function firstDescStoraje(event,element) {
-        event.stopPropagation();
-        reportbackGround.classList.remove('active');
-        firstDesckStorje.push(element);
-        localStorage.setItem('firstDesc', JSON.stringify(firstDesckStorje));
-        // firstDec(element)
-        firstDesckStorje.forEach(item=>firstDec(item));
-       console.log(firstDesckStorje);
-    }
-    AddedInfirstDesck.addEventListener('click',(event)=>firstDescStoraje(event,element,firstDesckStorje));
+    modalDesckWindow.classList.add('active');
+    localStorage.setItem('descCandidate', JSON.stringify(element));
     
     // AddedInfirstDesck.onclick = (event,element)=>{
       
@@ -126,6 +114,24 @@ export function addPin (menuListWrap,event,element) {
     //     console.log('333');
     // }
 }
+
+const AddedInfirstDesck = document.querySelector('.AddedInfirstDesck');
+
+function firstDescStoraje(event) {
+    event.stopPropagation();
+
+    const reportbackGround = document.getElementById('reportBackground');
+    let firstDesckStorje = localStorage.getItem('firstDesc') ? JSON.parse(localStorage.getItem('firstDesc')) : [];
+    const element = JSON.parse(localStorage.getItem('descCandidate'));
+    
+    reportbackGround.classList.remove('active');
+
+    firstDesckStorje.push(element);
+
+    localStorage.setItem('firstDesc', JSON.stringify(firstDesckStorje));
+    }
+
+AddedInfirstDesck.addEventListener('click',firstDescStoraje);
 
 export function menuActive(menuListWrap,event) {
     event.stopPropagation()
@@ -190,6 +196,11 @@ function firstDesck () {
     mainConteiner.classList.add('disabled');
     secondDesck.classList.add('disabled');
     thirdDesck.classList.add('disabled');
+
+    firstDesck.innerHTML = '';
+
+    let firstDesckStorje = localStorage.getItem('firstDesc') ? JSON.parse(localStorage.getItem('firstDesc')) : [];
+    firstDesckStorje.forEach(item => firstDec(item));
 }
 dasckMenusFirstListItem.addEventListener('click',firstDesck);
 
